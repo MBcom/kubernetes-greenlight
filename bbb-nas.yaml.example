@@ -1,0 +1,14 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: bbb-nas
+spec:
+  capacity:
+    storage: 1Gi
+  nfs:
+    server: <your nfs server>
+    path: <path to shared folder where your /var/bigbluebutton/published/ folder is>
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem

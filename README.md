@@ -10,6 +10,8 @@ In this repository you can find scripts for deploying https://github.com/bigblue
 sed -i 's/greenlight-ns/<your namespace name>/g' *.yaml
 kubectl -n <your namespace name> apply -f *.yaml
 ```  
+  
+If you use the greenlight of https://github.com/mbcom/greenlight you must also create the `bbb-nas.yaml.example` and the `bbb-nas-claim.yaml.example`. In `bbb-nas.yaml.example` specify your NAS serveraddress where your `/var/bigbluebutton/published/` files are placed. In `bbb-nas-claim.yaml.example` specify the right namespace as above.
 
 ## Another Links
 * you can find an GDPR compliant Greenlight at https://github.com/mbcom/greenlight , this Greenlight fork contains

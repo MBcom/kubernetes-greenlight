@@ -1,6 +1,6 @@
 # kubernetes Greenlight deployment
 
-In this repository you can find scripts for deploying https://github.com/bigbluebutton/greenlight to a kubernetes cluster.
+In this repository you can find scripts for deploying https://github.com/bigbluebutton/greenlight or https://github.com/mbcom/greenlight to a kubernetes cluster.
 
 ## Installation
 1. create a new namespace in your kubernetes cluster

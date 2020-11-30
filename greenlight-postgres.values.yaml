@@ -1,0 +1,3 @@
+postgresqlPassword: a_password_that_i_should_change
+postgresqlDatabase: greenlight
+postgresqlUsername: greenlight

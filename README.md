@@ -9,8 +9,8 @@ In this repository you can find scripts for deploying https://github.com/bigblue
 ```bash
 # if you have not already done before
 # helm repo add bitnami https://charts.bitnami.com/bitnami
-sed -i 's/a_password_that_i_should_change/save_password/g' greenlight-postgres.values.yaml
-helm install -n <your namespace name> greenlight -f greenlight-postgres.values.yaml bitnami/postgresql
+sed -i 's/a_password_that_i_should_change/save_password/g' greenlight-postgres.values
+helm install -n <your namespace name> greenlight -f greenlight-postgres.values bitnami/postgresql
 ```
 4. run the following inside repository folder
 ```bash

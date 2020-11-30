@@ -4,11 +4,18 @@ In this repository you can find scripts for deploying https://github.com/bigblue
 
 ## Installation
 1. create a new namespace in your kubernetes cluster
-2. clone this repository to a computer with kubectl installed
-3. run the following inside repository folder
+2. clone this repository to a computer with kubectl and helm installed
+3. deploy a postgres db to your cluster with the following command
+```bash
+# if you have not already done before
+# helm repo add bitnami https://charts.bitnami.com/bitnami
+helm install -n <your namespace name> greenlight -f greenlight-postgres.values.yaml bitnami/postgresql
+```
+4. run the following inside repository folder
 ```bash
 sed -i 's/greenlight-ns/<your namespace name>/g' *.yaml
-sed -i 's/greenlight-image/<greenlight image name>/g'
+sed -i 's/greenlight-image/<greenlight image name>/g' greenlight-deployment.yaml
+sed -i 's/greenlight-db-password/<greenlight db password>/g' greenlight-deployment.yaml
 kubectl -n <your namespace name> apply -f *.yaml
 ```  
   

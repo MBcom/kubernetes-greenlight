@@ -26,7 +26,7 @@ spec:
           value: postgres://greenlight:greenlight-db-password@greenlight-postgresql:5432/greenlight
         envFrom:
         - secretRef:
-            name: production-secret
+            name: greenlight-secret
         image: greenlight-image
         livenessProbe:
           failureThreshold: 3

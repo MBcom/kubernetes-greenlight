@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: greenlight
+  name: greenlight
+  namespace: greenlight-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: greenlight
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: greenlight
+    spec:
+      containers:
+      - env:
+        - name: DATABASE_URL
+          value: postgres://greenlight:greenlight-db-password@greenlight-postgresql:5432/greenlight
+        envFrom:
+        - secretRef:
+            name: production-secret
+        image: greenlight-image
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: 80
+            scheme: HTTP
+          initialDelaySeconds: 50
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 15
+        name: auto-deploy-app
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: 80
+            scheme: HTTP
+          initialDelaySeconds: 40
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 3
+        volumeMounts:
+#        - mountPath: /var/bigbluebutton/published/presentation
+#          name: bbb-nas
+#          subPath: BBB/published/presentation
+      restartPolicy: Always
+#      volumes:
+#      - name: bbb-nas
+#        persistentVolumeClaim:
+#          claimName: bbb-nas-claim

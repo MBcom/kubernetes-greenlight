@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  labels:
+    app: greenlight
+  name: greenlight
+  namespace: greenlight-ns
+spec:
+  rules:
+  - host: <your url>
+    http:
+      paths:
+      - backend:
+          serviceName: greenlight
+          servicePort: 80
+        path: /
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - <your url>
+    secretName: <your secret name>

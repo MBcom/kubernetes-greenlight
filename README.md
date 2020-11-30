@@ -19,6 +19,7 @@ sed -i 's/greenlight-image/<greenlight image name>/g' greenlight-deployment.yaml
 sed -i 's/greenlight-db-password/<greenlight db password>/g' greenlight-deployment.yaml
 kubectl -n <your namespace name> apply -f *.yaml
 ```  
+5. to use the provided ingress ressource edit the `greenlight-ingress.yaml.example` and fill in the required fields manually after that you can deploy it too  
   
 If you use the greenlight of https://github.com/mbcom/greenlight you must also create the `bbb-nas.yaml.example` and the `bbb-nas-claim.yaml.example`. In `bbb-nas.yaml.example` specify your NAS serveraddress where your `/var/bigbluebutton/published/` files are placed. In `bbb-nas-claim.yaml.example` specify the right namespace as above.
 Too you need to uncomment the commented lines in `greenlight-deployment.yaml` and apply it again.
